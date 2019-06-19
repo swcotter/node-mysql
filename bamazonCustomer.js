@@ -3,9 +3,9 @@ var inquirer = require("inquirer");
 
 var connection = mysql.createConnection({
     host: "localhost",
-    port: 8889,
+    port: 3306,
     user: "root",
-    password: "root",
+    password: "RoloPolo1",
     database: "bamazon_DB"
 });
 //initial connection
@@ -13,6 +13,27 @@ connection.connect(function (err) {
     if (err) throw err;
     displayOptions();
 });
+
+inquirer
+  .prompt([
+      
+    {
+        name: 'itemId',
+        type:'list',
+    message: "What would you like today?",
+choices: ["clothing", "sports", "electronics", "swimwear"]} 
+
+    /* Pass your questions in here */
+  ])
+  .then(answers => {
+      console.log(answers);
+    // Use user feedback for... whatever!!
+  });
+
+
+
+
+
 
 //functions
 function displayOptions() {
